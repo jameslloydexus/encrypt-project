@@ -1,0 +1,76 @@
+openapi: 3.0.0
+info:
+  version: 0.1.0
+  title: ENCRYPT API
+  description: Specification of ENCRYPT APIs for exposing privacy-preserving computing service
+
+servers:
+  - url: https://${TBD}:${TBD}
+
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+security:
+  - BasicAuth: []
+
+paths:
+  /dataowner/he/getcipher:
+  /dataowner/he/dataupload:
+  /dataowner/tee/verifier:
+  /dataowner/tee/attestation:
+      post:
+      description: Challenge Attestation against the ENCRYPT TEE
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object 
+              required:
+                - access_token
+              properties:
+                access_token:
+                  type: string              
+      responses:
+        '200':
+          description: Successfully inserted a new apikey or wallet address
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:   
+                  code:
+                    type: string
+                  ra_quote:
+                    type: string
+        '401':
+          description: Invalid Access Token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:   
+                  result:
+                    type: string
+                  reason:
+                    type: string                      
+        '500':
+          description: Internal Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:   
+                  result:
+                    type: string
+                  reason:
+                    type: string       
+  /dataowner/tee/dataupload:
+  /computation/status:
+  /computation/start:
+  /researcher/requirements:
+   
+                    
+ 
