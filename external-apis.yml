@@ -16,10 +16,11 @@ security:
   - BasicAuth: []
 
 paths:
-  /dataowner/he/getcipher:
-  /dataowner/he/dataupload:
-  /dataowner/tee/verifier:
-  /dataowner/tee/attestation:
+  /dataowner/he/getcipher:  #CEA to define API for downloading a HE cipher tool
+  /dataowner/he/dataupload: #CEA to define API for uploading data
+  /dataowner/tee/verifier: #TRUSTUP
+  /dataowner/preprocessor: #CERTH to define the api to download a preprocessing tool that for example will extract the meta information on data and provide them to ENCRYPT
+  /dataowner/tee/attestation: #TRUSTUP
       post:
       description: Challenge Attestation against the ENCRYPT TEE
       requestBody:
@@ -66,11 +67,14 @@ paths:
                   result:
                     type: string
                   reason:
-                    type: string       
-  /dataowner/tee/dataupload:
-  /computation/status:
-  /computation/start:
-  /researcher/requirements:
+                    type: string  
+  /dataowner/tee/dataupload: #TRUSTUP
+  /dataowner/dp/dataupload: #8BELLS to define the upload of data for DP. Not sure if this makes sense. 
+  /dataowner/recommendation/setreqs: #EXUS to define request to send for setting requirements of recommendation on data owner side
+  /computation/status: #TRUSTUP
+  /computation/start:  #TRUSTUP
+  /researcher/recommendation/setreqs: #EXUS to define request to send for setting requirements of recommendation on researcher side
+  
    
                     
  
